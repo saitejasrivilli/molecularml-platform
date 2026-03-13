@@ -1,8 +1,8 @@
 ---
 title: MolecularML Platform API
-emoji: ⬡
+emoji: 🧬
 colorFrom: blue
-colorTo: teal
+colorTo: purple
 sdk: docker
 pinned: false
 license: mit
