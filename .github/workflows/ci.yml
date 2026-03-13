@@ -2,9 +2,9 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
+    branches: [main, master]
 
 jobs:
   test-backend:
@@ -48,7 +48,7 @@ jobs:
   deploy-backend:
     needs: test-backend
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && github.event_name == 'push'
     steps:
       - uses: actions/checkout@v4
 
@@ -63,7 +63,7 @@ jobs:
   deploy-frontend:
     needs: test-frontend
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master') && github.event_name == 'push'
     steps:
       - uses: actions/checkout@v4
 
